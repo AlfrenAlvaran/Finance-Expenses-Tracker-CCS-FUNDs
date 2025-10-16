@@ -16,7 +16,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 app.use(
   cors({
-    origin: [process.env.VITE_API_BASE_URL, process.env.VITE_API_BASE_URL_1],
+    origin: [process.env.CLIENT_ORIGIN_1, process.env.CLIENT_ORIGIN_2],
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization", "User-Id"],
