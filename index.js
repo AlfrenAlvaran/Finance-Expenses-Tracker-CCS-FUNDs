@@ -14,14 +14,27 @@ const port = process.env.PORT || 5000;
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const allowedOrigins = [
+  process.env.VITE_API_BASE_URL,
+  process.env.VITE_API_BASE_URL_1,
+  'https://tracker-for-now.netlify.app', // just in case
+];
+
 app.use(
   cors({
-    origin: [process.env.CLIENT_ORIGIN_1, process.env.CLIENT_ORIGIN_2],
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization", "User-Id"],
   })
 );
+
 
 app.use(express.json());
 app.use(cookieParser());
