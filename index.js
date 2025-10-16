@@ -15,8 +15,8 @@ const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const allowedOrigins = [
-  process.env.VITE_API_BASE_URL,
-  process.env.VITE_API_BASE_URL_1,
+  process.env.CLIENT_ORIGIN_2,
+  process.env.CLIENT_ORIGIN_1,
   'https://tracker-for-now.netlify.app', // just in case
 ];
 
