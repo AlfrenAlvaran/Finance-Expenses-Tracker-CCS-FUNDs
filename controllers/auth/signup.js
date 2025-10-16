@@ -5,7 +5,7 @@ import sendVerificationEmail from "../../utils/mailer.js";
 import VerificationToken from "../../models/verificationToken.model.js";
 const SignUp = async (req, res) => {
   try {
-    const { fname, lname, email, password, postal, state } = req.body;
+    const { fname, lname, email, password, postal, state } = req.body; // Fck
 
     const exist = await UserModel.findOne({ email });
     if (exist) {
